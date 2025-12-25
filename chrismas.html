@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merry Christmas 🎄</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #355c7d, #2c3e50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    color: white;
+}
+
+/* ===== Card ===== */
+.card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 520px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 42px;
+    color: #ffd700;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px gold;
+}
+
+h2 {
+    font-weight: 400;
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+/* ===== Gift Box ===== */
+.gift {
+    font-size: 80px;
+    cursor: pointer;
+    animation: bounce 1.8s infinite;
+    transition: transform 0.3s;
+}
+
+.gift:hover {
+    transform: scale(1.2);
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.shake {
+    animation: shake 0.4s infinite;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0); }
+}
+
+/* ===== Surprise ===== */
+.surprise {
+    display: none;
+    margin-top: 25px;
+    animation: pop 1s ease;
+}
+
+@keyframes pop {
+    from {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.surprise img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ffd700;
+    box-shadow: 0 0 25px gold;
+    margin-bottom: 20px;
+}
+
+.surprise p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.signature {
+    margin-top: 15px;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    .gift {
+        font-size: 70px;
+    }
+
+    .surprise img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .surprise p {
+        font-size: 16px;
+    }
+
+    .card {
+        padding: 30px 20px;
+        border-radius: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Merry Christmas</h1>
+    <h2>🎄 กดของขวัญเพื่อรับเซอร์ไพรส์ 🎁</h2>
+
+    <div class="gift" id="gift">🎁</div>
+
+    <div class="surprise" id="surprise">
+        <img src="Nut.JPG" alt="Boss">
+        <p>
+            ขอให้คริสต์มาสปีนี้  
+            เต็มไปด้วยความสุข ความสำเร็จ  
+            และพลังดี ๆ ตลอดปีใหม่ที่จะมาถึงนะคะ 🎉  
+        </p>
+
+    </div>
+</div>
+
+<script>
+const gift = document.getElementById("gift");
+const surprise = document.getElementById("surprise");
+
+gift.addEventListener("click", () => {
+    gift.classList.add("shake");
+
+    setTimeout(() => {
+        gift.textContent = "🎉";
+        gift.classList.remove("shake");
+        surprise.style.display = "block";
+
+        // สั่นมือถือ (ถ้ารองรับ)
+        if (navigator.vibrate) {
+            navigator.vibrate(200);
+        }
+    }, 1200);
+});
+</script>
+
+</body>
+</html>
